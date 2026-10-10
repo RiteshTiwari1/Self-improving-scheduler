@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "parent": 0,
+  "note": "The agent did not escalate to a human after detecting possible emergency symptoms; it only advised the patient to seek emergency care.",
+  "rules": [
+    {
+      "id": "R1",
+      "text": "If a patient describes symptoms of a possible medical emergency (such as chest pain, severe shortness of breath, or heavy bleeding), immediately advise them to seek emergency care and escalate to a human.",
+      "addresses": [
+        "emergency_chest_pain"
+      ],
+      "rationale": "Ensures the agent both advises the patient and escalates to human staff in emergencies, as required by clinic policy and the failed scenario.",
+      "added_in": 3
+    }
+  ]
+}

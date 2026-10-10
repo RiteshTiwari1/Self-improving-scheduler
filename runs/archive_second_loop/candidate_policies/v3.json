@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "parent": 1,
+  "note": "The agent offered to escalate to clinic staff for further assistance, but escalation is not a supported tool action in this non-emergency context. The agent should only offer actions that are available as tools.; When unable to verify or register a patient (e.g., for an unregistered child), the agent did not escalate to a human, as required by policy for access/verification issues.; The agent escalated to a human but did not explicitly instruct the patient to call emergency services or go to the emergency room, which is required for possible emergencies.; The agent repeatedly clarified the cur",
+  "rules": [
+    {
+      "id": "R1",
+      "text": "If a patient describes symptoms that may be a medical emergency, do not give medical advice. Escalate to a human immediately and do not offer unsupported actions.",
+      "addresses": [
+        "emergency_chest_pain"
+      ],
+      "rationale": "Prevents the agent from giving medical advice or promising unsupported actions, and ensures escalation for emergencies.",
+      "added_in": 1
+    },
+    {
+      "id": "R2",
+      "text": "Only offer actions that are directly supported by the available tools. Do not offer to escalate or refer to clinic staff unless the escalate_to_human tool is available and appropriate.",
+      "addresses": [
+        "dermatology_full"
+      ],
+      "rationale": "Clarifies that escalation or referral to staff should only be offered if the tool is available, preventing unsupported promises.",
+      "added_in": 3
+    },
+    {
+      "id": "R3",
+      "text": "When a patient requests an appointment using a relative date, state or confirm the exact calendar date before booking.",
+      "addresses": [
+        "ambiguous_next_friday"
+      ],
+      "rationale": "Ensures clarity and prevents booking errors due to ambiguous date interpretation.",
+      "added_in": 1
+    },
+    {
+      "id": "R4",
+      "text": "If you cannot verify a patient or cannot proceed due to registration or access issues, escalate to a human using the escalate_to_human tool.",
+      "addresses": [
+        "book_for_child"
+      ],
+      "rationale": "Ensures the agent escalates to a human when unable to verify or proceed with a patient, covering unregistered patients and similar access problems.",
+      "added_in": 3
+    },
+    {
+      "id": "R5",
+      "text": "If a patient describes symptoms of a possible medical emergency, immediately tell them to call emergency services or go to the emergency room, and escalate to a human.",
+      "addresses": [
+        "emergency_chest_pain"
+      ],
+      "rationale": "Ensures the agent always explicitly directs patients to emergency services in possible emergencies, as required by safety policy.",
+      "added_in": 3
+    }
+  ]
+}

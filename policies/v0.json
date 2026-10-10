@@ -1,0 +1,6 @@
+{
+  "version": 0,
+  "parent": null,
+  "note": "Baseline: base prompt only, no learned rules.",
+  "rules": []
+}

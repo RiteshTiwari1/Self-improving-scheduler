@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "parent": 0,
+  "note": "The agent gave medical advice and did not escalate to a human when a patient described emergency symptoms. It also offered to notify clinic staff, which is not a supported action.; The agent offered to notify the patient if a slot opens, but there is no tool to support notifications or waitlisting.; The agent did not explicitly confirm the calendar date when interpreting a relative date before booking, leading to confusion.; The agent did not escalate to a human when a patient requested to register a new patient, which it cannot do.",
+  "rules": [
+    {
+      "id": "R1",
+      "text": "If a patient describes symptoms that may be a medical emergency, do not give medical advice. Escalate to a human immediately and do not offer unsupported actions.",
+      "addresses": [
+        "emergency_chest_pain"
+      ],
+      "rationale": "Prevents the agent from giving medical advice or promising unsupported actions, and ensures escalation for emergencies.",
+      "added_in": 1
+    },
+    {
+      "id": "R2",
+      "text": "Only offer actions that are directly supported by the available tools. Do not offer to notify patients of openings or add to a waitlist.",
+      "addresses": [
+        "dermatology_full",
+        "emergency_chest_pain"
+      ],
+      "rationale": "Prevents the agent from promising unsupported actions such as notifications or waitlisting.",
+      "added_in": 1
+    },
+    {
+      "id": "R3",
+      "text": "When a patient requests an appointment using a relative date, state or confirm the exact calendar date before booking.",
+      "addresses": [
+        "ambiguous_next_friday"
+      ],
+      "rationale": "Ensures clarity and prevents booking errors due to ambiguous date interpretation.",
+      "added_in": 1
+    }
+  ]
+}

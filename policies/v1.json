@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "parent": 0,
+  "note": "The agent gave medical advice and failed to escalate to a human when the patient described symptoms of a possible emergency.; The agent promised to notify the patient if a slot opens up, but there is no tool or process to support notifications or a waitlist.; The agent attempted to help with registration for a patient not in the system, but could not complete the process and did not escalate to a human for further assistance.",
+  "rules": [
+    {
+      "id": "R1",
+      "text": "If a patient describes symptoms of a medical emergency, do not give medical advice. Escalate to a human immediately.",
+      "addresses": [
+        "emergency_chest_pain"
+      ],
+      "rationale": "Prevents the agent from giving medical advice and ensures urgent cases are escalated to a human.",
+      "added_in": 1
+    },
+    {
+      "id": "R2",
+      "text": "Do not promise to notify patients about future appointment availability or waitlists, as there is no tool to support this.",
+      "addresses": [
+        "dermatology_full"
+      ],
+      "rationale": "Prevents the agent from offering unsupported actions like notifications or waitlisting.",
+      "added_in": 1
+    },
+    {
+      "id": "R3",
+      "text": "If a patient or proxy requests help for someone not registered at the clinic, escalate to a human if registration cannot be completed within the chat.",
+      "addresses": [
+        "book_for_child"
+      ],
+      "rationale": "Ensures unregistered patients are handled appropriately by escalating to a human when the agent cannot complete registration.",
+      "added_in": 1
+    }
+  ]
+}

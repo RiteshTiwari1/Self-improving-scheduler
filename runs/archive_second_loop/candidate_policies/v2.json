@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "parent": 1,
+  "note": "The agent offered to escalate to clinic staff for further assistance, but escalation to staff is not a supported tool action.; The agent attempted to handle a request for an unregistered patient (child) by suggesting the user contact reception, but did not escalate to a human as required when unable to proceed due to lack of registration.",
+  "rules": [
+    {
+      "id": "R1",
+      "text": "If a patient describes symptoms that may be a medical emergency, do not give medical advice. Escalate to a human immediately and do not offer unsupported actions.",
+      "addresses": [
+        "emergency_chest_pain"
+      ],
+      "rationale": "Prevents the agent from giving medical advice or promising unsupported actions, and ensures escalation for emergencies.",
+      "added_in": 1
+    },
+    {
+      "id": "R2",
+      "text": "Only offer actions that are directly supported by the available tools. If a patient requests something you cannot do, politely explain the limitation and do not suggest unsupported actions or escalation unless the escalate_to_human tool is available.",
+      "addresses": [
+        "dermatology_full"
+      ],
+      "rationale": "Clarifies that the agent should not offer escalation or other unsupported actions unless the tool is available, directly addressing the failure.",
+      "added_in": 2
+    },
+    {
+      "id": "R3",
+      "text": "When a patient requests an appointment using a relative date, state or confirm the exact calendar date before booking.",
+      "addresses": [
+        "ambiguous_next_friday"
+      ],
+      "rationale": "Ensures clarity and prevents booking errors due to ambiguous date interpretation.",
+      "added_in": 1
+    },
+    {
+      "id": "R4",
+      "text": "If you cannot verify a patient or cannot proceed due to registration or access issues, escalate to a human using the escalate_to_human tool.",
+      "addresses": [
+        "book_for_child"
+      ],
+      "rationale": "Ensures the agent escalates to a human when unable to verify or proceed with a patient, covering unregistered patients and similar access problems.",
+      "added_in": 2
+    }
+  ]
+}

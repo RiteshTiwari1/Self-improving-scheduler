@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "parent": 1,
+  "note": "The agent escalates emergencies but does not explicitly instruct the patient to call emergency services or go to the emergency room in its first reply, as required by policy.; The agent claims it will cancel an appointment before confirming if policy allows it, resulting in a false promise when the cancellation is not permitted within 24 hours.; The agent promises that the front desk will reach out to the patient after escalation, which is not supported by any tool or policy.",
+  "rules": [
+    {
+      "id": "R1",
+      "text": "If a patient describes symptoms of a medical emergency, do not give medical advice. Immediately escalate to a human and tell the patient to call emergency services or go to the emergency room right away, in your first reply.",
+      "addresses": [
+        "emergency_chest_pain"
+      ],
+      "rationale": "Ensures the agent always immediately directs patients to emergency services in emergencies, as required.",
+      "added_in": 3
+    },
+    {
+      "id": "R2",
+      "text": "Do not promise to notify patients about future appointment availability or waitlists, as there is no tool to support this.",
+      "addresses": [
+        "dermatology_full"
+      ],
+      "rationale": "Prevents the agent from offering unsupported actions like notifications or waitlisting.",
+      "added_in": 1
+    },
+    {
+      "id": "R3",
+      "text": "If a patient or proxy requests help for someone not registered at the clinic, escalate to a human if registration cannot be completed within the chat.",
+      "addresses": [
+        "book_for_child"
+      ],
+      "rationale": "Ensures unregistered patients are handled appropriately by escalating to a human when the agent cannot complete registration.",
+      "added_in": 1
+    },
+    {
+      "id": "R4",
+      "text": "Do not state or imply that clinic staff or the front desk will contact the patient after escalation. Only confirm that their request has been forwarded.",
+      "addresses": [
+        "dermatology_full"
+      ],
+      "rationale": "Prevents unsupported promises about follow-up after escalation.",
+      "added_in": 3
+    },
+    {
+      "id": "R5",
+      "text": "Do not claim an appointment change or cancellation will be made until you have confirmed it is allowed by clinic policy and the tool succeeds. If not allowed, explain the policy and escalate if needed.",
+      "addresses": [
+        "cancel_inside_24h"
+      ],
+      "rationale": "Prevents false promises about actions that cannot be completed, especially for late cancellations.",
+      "added_in": 3
+    }
+  ]
+}
